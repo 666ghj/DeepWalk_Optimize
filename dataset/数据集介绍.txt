@@ -1,0 +1,5 @@
+label（图节点的真实标签）
+feat（图节点的自身属性）
+adj（图结构对应的邻接矩阵）
+Cora数据集介绍：https://blog.csdn.net/zfhsfdhdfajhsr/article/details/116137598
+2708个节点，5278条边，1433个特征，7个类别
