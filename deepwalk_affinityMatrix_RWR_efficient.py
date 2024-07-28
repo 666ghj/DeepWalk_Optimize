@@ -75,8 +75,6 @@ class PersonalizedRW:
         print("开始生成个性化随机游走语料库：")
         M = self.personalized_random_walk(alpha, max_iter)  # 计算亲和矩阵，不移动到CPU
         M_cpu = M.cpu().numpy()  # 仅一次性转换整个矩阵到CPU
-        # 打印亲和矩阵的前5行
-        print("     亲和矩阵的前5行为：", M[:5])
         nodes = list(self.G.nodes)  # 获取所有节点列表
         num_nodes = len(nodes)
         num_walks = 50  # 每个节点进行50次游走
@@ -107,12 +105,6 @@ class PersonalizedRW:
     # 训练Word2Vec模型
     def train(self, total_walks, embed_size=64, window_size=3, output="."):
         print("开始训练word2vec模型")
-        # 打印total_walks的长度
-        print("     total_walks长度为", len(total_walks))
-        # 查看total_walks的前5个元素
-        print("     total_walks前5个元素为", total_walks[:5])
-        # 查看total_walks涵盖的所有节点数量
-        print("     total_walks涵盖的所有节点数量为", len(set(sum(total_walks, []))))
         model = Word2Vec(
             total_walks,
             vector_size=embed_size,  # 词向量维度

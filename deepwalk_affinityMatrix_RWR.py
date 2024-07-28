@@ -25,9 +25,6 @@ class PersonalizedRW:
         self.G.add_edges_from(edges)  # 添加边
         self.adjacency = csr_matrix(nx.adjacency_matrix(self.G))  # 计算邻接矩阵并转换为压缩稀疏行矩阵（CSR）
         self.transition_matrix = self.get_transition_matrix()  # 计算概率转移矩阵
-        # 将概率转移矩阵前三行输出到文件，新建“概率.csv”
-        print("概率矩阵保存到概率.csv")
-        np.savetxt("概率.csv", self.transition_matrix.cpu().numpy()[:3], delimiter=",")
 
     # 读取边信息的函数
     def read_edge(self, edge_txt):
@@ -67,10 +64,6 @@ class PersonalizedRW:
         row_sums[row_sums == 0] = 1  # 避免除以0
         M = M / row_sums
         
-        # 保存亲和矩阵前三行到文件，新建“亲和.csv”
-        print("亲和矩阵保存到亲和.csv")
-        np.savetxt("亲和.csv", M.cpu().numpy()[:3], delimiter=",")
-
         return M
 
     # 构建语料库的函数
