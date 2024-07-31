@@ -1,1 +1,5 @@
 /embedding_result_data/
+.ipynb_checkpoints/
+.vscode/
+__pycache__/
+.idea/
